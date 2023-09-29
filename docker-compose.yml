@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  # Django web application
+  fastapi:
+    build: ./backend
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/fastapi:/app
+    environment:
+      - DEBUG=True
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST=postgres
+    depends_on:
+      - postgres
+      - redis
+
+  # Vue.js frontend
+  vue:
+    build: ./frontend
+    container_name: vue
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/vue:/app
+      - /app/node_modules
+    depends_on:
+      - fastapi
+
+  # PostgreSQL database
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app_db
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+  # Redis cache
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:

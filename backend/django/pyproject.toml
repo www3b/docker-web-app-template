@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = ""
+authors = ["w3b"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.5"
+psycopg = {extras = ["binary"], version = "^3.1.11"}
+djangorestframework = "^3.14.0"
+pillow = "^10.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
