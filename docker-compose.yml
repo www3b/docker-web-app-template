@@ -41,8 +41,8 @@ services:
       - ./database:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=app_db
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=password
 
   # Redis cache
   redis:
