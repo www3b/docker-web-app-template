@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1 \
 WORKDIR /app
 
 # copy poetry files to the working directory
-COPY ./fastapi/poetry.lock ./fastapi/pyproject.toml /app
+COPY ./fastapi/poetry.lock ./fastapi/pyproject.toml /app/
 
 # install poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
