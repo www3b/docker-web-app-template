@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  # Django web application
+  # FastAPI web application
   fastapi:
     build: ./backend
     container_name: fastapi
