@@ -11,9 +11,9 @@ services:
       - ./backend/fastapi:/app
     environment:
       - DEBUG=True
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=app_db
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=password
       - POSTGRES_HOST=postgres
     depends_on:
       - postgres
